@@ -14,51 +14,10 @@ namespace Test_task.Controllers
         }
 
 
-        //TODO: Переписать все методы на async\await
+
         [HttpGet]
-        public IActionResult FilterFromUrl()
-        {   
-            var request = HttpContext.Request;
-
-            var query = request.Query;
-
-
-            var filter = new Filter
-            {
-                Name_material = query["Name_material"],
-                Brand = query["Brand"],
-                Item_number = query["Item_number"]
-            };
-
-
-
-            try
-            {
-                filter.Weight_with_material = float.Parse(query["Weight_with_material"]);
-            }
-            catch
-            {
-                filter.Weight_with_material = null;
-            }
-
-            try
-            {
-                filter.Container_volume = float.Parse(query["Container_volume"]);
-            }
-            catch
-            {
-                filter.Container_volume = null;
-            }
-
-            try
-            {
-                filter.Specific_weight = float.Parse(query["Specific_weight"]);
-            }
-            catch
-            {
-                filter.Specific_weight = null;
-            }
-
+        public IActionResult FilterFromEntity([FromQuery]Filter filter)
+        {
             var queryPaintworkMaterial = db.PaintworkMaterials.AsQueryable();
 
             if (filter.Name_material != null)
@@ -83,7 +42,6 @@ namespace Test_task.Controllers
             {
                 return Json(queryPaintworkMaterial);
             }
-
 
             return new BadRequestResult();
         }

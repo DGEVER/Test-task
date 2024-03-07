@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Test_task.Models;
 
@@ -42,7 +43,6 @@ namespace Test_task
                 name:"default",
                 pattern: "{controller}/{action}/{id?}"
                 );
-
 
             app.Run();
         }
