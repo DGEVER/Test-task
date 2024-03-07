@@ -16,9 +16,11 @@ public partial class TestTaskContext : DbContext
     }
 
     public virtual DbSet<PaintworkMaterial> PaintworkMaterials { get; set; }
-    //TODO: Поменять на строку из файла конфигурации
+    
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Server=DESKTOP-T1HQMAS;Database=Test_task;Trusted_Connection=True;TrustServerCertificate=Yes;");
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
