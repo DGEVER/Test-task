@@ -16,7 +16,7 @@ namespace Test_task.Controllers
         this.db = db;
         }
 
-        //TODO: Переписать все методы на async\await
+       
         [HttpGet]
         public IActionResult Read(string id)
         {
